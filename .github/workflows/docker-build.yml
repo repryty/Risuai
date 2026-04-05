@@ -49,5 +49,5 @@ jobs:
             docker buildx build --platform linux/amd64 --label "org.opencontainers.image.ref.name=risuai" --label "org.opencontainers.image.version=${{ github.ref_name }}" -t ghcr.io/$GITHUB_REPOSITORY_OWNER_SMALLCASE/risuai:${{ github.ref_name }} -t ghcr.io/$GITHUB_REPOSITORY_OWNER_SMALLCASE/risuai:latest --push .
           else
             SHORT_SHA=$(git rev-parse --short "$GITHUB_SHA")
-            docker buildx build --platform linux/amd64 --label "org.opencontainers.image.ref.name=risuai" --label "org.opencontainers.image.version=${{ github.sha }}" -t ghcr.io/$GITHUB_REPOSITORY_OWNER_SMALLCASE/risuai:$SHORT_SHA --push .
+            docker buildx build --platform linux/amd64 --label "org.opencontainers.image.ref.name=risuai" --label "org.opencontainers.image.version=${{ github.sha }}" -t ghcr.io/$GITHUB_REPOSITORY_OWNER_SMALLCASE/risuai:$SHORT_SHA --push -t ghcr.io/$GITHUB_REPOSITORY_OWNER_SMALLCASE/risuai:latest --push .
           fi
